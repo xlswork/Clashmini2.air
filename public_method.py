@@ -31,6 +31,34 @@ def get_image_paths(folder_path):
     return image_paths
 
 
+# 改良后获取指定目录下的图片文件
+
+def get_image_paths_2(folder_path):
+    image_extensions = ['.png', '.jpg', '.jpeg', '.bmp', '.tiff']
+    images_info = []
+
+    for file in os.listdir(folder_path):
+        filename, extension = os.path.splitext(file)
+        if extension.lower() in image_extensions:
+            image_dict = {
+                "name": filename,
+                "image_path": os.path.join(folder_path, file),
+            }
+            image_dict['skills_locked'] = [
+                f"D:\\WorkingCode\\Clashmini2.air\\picture\\collocation\\locked\\hero_info\\{image_dict['name']}_skill1.png",
+                f"D:\\WorkingCode\\Clashmini2.air\\picture\\collocation\\locked\\hero_info\\{image_dict['name']}_skill2.png",
+                f"D:\\WorkingCode\\Clashmini2.air\\picture\\collocation\\locked\\hero_info\\{image_dict['name']}_skill3.png",
+            ]
+            image_dict['skills_unlocked'] = [
+                f"D:\\WorkingCode\\Clashmini2.air\\picture\\collocation\\locked\\hero_info\\{image_dict['name']}_skill4.png",
+                f"D:\\WorkingCode\\Clashmini2.air\\picture\\collocation\\locked\\hero_info\\{image_dict['name']}_skill5.png",
+                f"D:\\WorkingCode\\Clashmini2.air\\picture\\collocation\\locked\\hero_info\\{image_dict['name']}_skill6.png",
+            ]
+            images_info.append(image_dict)
+
+    return images_info
+
+
 # 在指定目录下创建以当前时间为名的文件夹
 def create_timestamp_folder(parent_folder):
     # 获取当前时间并格式化为字符串
