@@ -16,6 +16,7 @@ def click_unlocked():
             """
             if image_info["name"] == "COUNTESS":
                 click_skill_locked(image_info)
+            click_hero_unlocked()
             if exists(
                     Template("./picture/collocation/button/button_quit.png", resolution=(1080, 2400), threshold=0.9)):
                 touch(
@@ -43,4 +44,10 @@ def click_skill_locked(image_info: dict):
 
 # 解锁英雄
 def click_hero_unlocked():
-    pass
+    if exists(Template("picture/collocation/button/button_unlocked.png", resolution=(1080, 2400), threshold=0.8)):
+        touch(Template("picture/collocation/button/button_unlocked.png", resolution=(1080, 2400), threshold=0.8))
+        if exists(
+                Template("picture/collocation/button/button_unlocked_gem.png", resolution=(1080, 2400), threshold=0.8)):
+            touch(
+                Template("picture/collocation/button/button_unlocked_gem.png", resolution=(1080, 2400), threshold=0.8))
+
